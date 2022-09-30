@@ -1,3 +1,5 @@
+###Hay que hacerlo igual a todo lo que hayamos hecho en la practica 3.
+
 #UO Unidad organizativa
 #Creación de la unidad organizativa nombrada departamento:
 New-ADOrganizationalUnit -Name "empresa" -Path "DC=JMG,DC=LOCAL" -Description "descripcion"
@@ -11,27 +13,76 @@ New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=empresa,DC=LOCAL" 
 #Creación de una nueva unidad organizativa (CONTABILIDAD) dentro de la unidad organizativa llamada empresa:
 New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=empresa,DC=LOCAL" -Description "Departamento de contabilidad"
 
-#Usuario
+#Usuarios del departamento Ventas.
 #Creación del usuario 1 David del departamento VENTAS:
 New-ADUser -Name "David" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
 -SamAccountName "David" -UserPrincipalName "David@EMPRESA.LOCAL"
 -AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
--GivenName "David" -Surname "Segarra" -ChangePasswordAtLogon $true
+-GivenName "David" -Surname "Segarra" -ChangePasswordAtLogon $false
 -Enabled $true
 
 #Creación del usuario 2 Marcos del departamento VENTAS:
 New-ADUser -Name "Marcos" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
 -SamAccountName "Marcos" -UserPrincipalName "Marcos@EMPRESA.LOCAL"
 -AccountPassword (ConvertTo-SecureString "MA.VEN2."-AsPlainText -Force)
--GivenName "Marcos" -Surname "Gonzalez" -ChangePasswordAtLogon $true
+-GivenName "Marcos" -Surname "Gonzalez" -ChangePasswordAtLogon $false
 -Enabled $true
 
-#Creación del usuario 2 Marcos del departamento VENTAS:
+#Creación del usuario 3 Adrian del departamento VENTAS:
 New-ADUser -Name "Adrian" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
 -SamAccountName "Marcos" -UserPrincipalName "Adrian@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "AD.VEN2."-AsPlainText -Force)
--GivenName "Adrian" -Surname "Serrano" -ChangePasswordAtLogon $true
+-AccountPassword (ConvertTo-SecureString "AD.VEN3."-AsPlainText -Force)
+-GivenName "Adrian" -Surname "Serrano" -ChangePasswordAtLogon $false
 -Enabled $true
+
+#Creación del usuario 4 Jaume del departamento VENTAS:
+New-ADUser -Name "Jaume" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Jaume" -UserPrincipalName "Jaume@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "JA.VEN4."-AsPlainText -Force)
+-GivenName "Jaume" -Surname "Perez" -ChangePasswordAtLogon $false
+-Enabled $true
+
+#Creación del usuario 5 Eduardo del departamento VENTAS:
+New-ADUser -Name "Eduardo" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Eduardo" -UserPrincipalName "Eduardo@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "ED.VEN5."-AsPlainText -Force)
+-GivenName "Eduardo" -Surname "Garcia" -ChangePasswordAtLogon $false
+-Enabled $true
+
+
+
+#Usuarios del departamento COMPRAS.
+#Creación del usuario 1 Enrique del departamento COMPRAS:
+New-ADUser -Name "Enrique" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Enrique" -UserPrincipalName "Enrique@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "EN.COMP1."-AsPlainText -Force)
+-GivenName "Enrique" -Surname "Ballester" -ChangePasswordAtLogon $false
+-Enabled $true
+
+#Creación del usuario 2 Maria del departamento COMPRAS:
+New-ADUser -Name "Maria" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Maria" -UserPrincipalName "Maria@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "MA.COMP2."-AsPlainText -Force)
+-GivenName "Maria" -Surname "Lopez" -ChangePasswordAtLogon $false
+-Enabled $true
+
+#Creación del usuario 3 Pepe del departamento COMPRAS:
+New-ADUser -Name "Pepe" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Pepe" -UserPrincipalName "Pepe@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "PE.COMP3."-AsPlainText -Force)
+-GivenName "Pepe" -Surname "Llorca" -ChangePasswordAtLogon $false
+-Enabled $true
+
+
+
+#Usuarios del departamento CONTABILIDAD.
+#Creación del usuario 1 Ramon del departamento CONTABILIDAD:
+New-ADUser -Name "Ramon" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "David" -UserPrincipalName "Ramon@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
+-GivenName "Ramon" -Surname "Segarra" -ChangePasswordAtLogon $false
+-Enabled $true
+
 
 
 
