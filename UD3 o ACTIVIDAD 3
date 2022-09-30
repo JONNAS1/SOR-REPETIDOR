@@ -12,13 +12,26 @@ New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=empresa,DC=LOCAL" 
 New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=empresa,DC=LOCAL" -Description "Departamento de contabilidad"
 
 #Usuario
-#Creación del usuario David del departamento VENTAS:
-New-ADUser -Name "Davis" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "davids" -UserPrincipalName "david@EMPRESA.LOCAL"
+#Creación del usuario 1 David del departamento VENTAS:
+New-ADUser -Name "David" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "David" -UserPrincipalName "David@EMPRESA.LOCAL"
 -AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
 -GivenName "David" -Surname "Segarra" -ChangePasswordAtLogon $true
 -Enabled $true
 
+#Creación del usuario 2 Marcos del departamento VENTAS:
+New-ADUser -Name "Marcos" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Marcos" -UserPrincipalName "Marcos@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "MA.VEN2."-AsPlainText -Force)
+-GivenName "Marcos" -Surname "Gonzalez" -ChangePasswordAtLogon $true
+-Enabled $true
+
+#Creación del usuario 2 Marcos del departamento VENTAS:
+New-ADUser -Name "Adrian" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
+-SamAccountName "Marcos" -UserPrincipalName "Adrian@EMPRESA.LOCAL"
+-AccountPassword (ConvertTo-SecureString "AD.VEN2."-AsPlainText -Force)
+-GivenName "Adrian" -Surname "Serrano" -ChangePasswordAtLogon $true
+-Enabled $true
 
 
 
