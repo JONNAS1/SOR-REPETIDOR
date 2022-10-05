@@ -5,13 +5,13 @@
 New-ADOrganizationalUnit -Name "empresa" -Path "DC=JMG,DC=LOCAL" -Description "descripcion"
 
 #Creación de una nueva unidad organizativa (VENTAS) dentro de la unidad organizativa llamada empresa:
-New-ADOrganizationalUnit -Name "VENTAS" -Path "OU=empresa,DC=empresa,DC=LOCAL" -Description "Departamento de ventas"
+New-ADOrganizationalUnit -Name "VENTAS" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de ventas"
 
 #Creación de una nueva unidad organizativa (COMPRAS) dentro de la unidad organizativa llamada empresa:
-New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=empresa,DC=LOCAL" -Description "Departamento de compras"
+New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de compras"
 
 #Creación de una nueva unidad organizativa (CONTABILIDAD) dentro de la unidad organizativa llamada empresa:
-New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=empresa,DC=LOCAL" -Description "Departamento de contabilidad"
+New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de contabilidad"
 
 #Usuarios del departamento Ventas.
 #Creación del usuario 1 David del departamento VENTAS:
