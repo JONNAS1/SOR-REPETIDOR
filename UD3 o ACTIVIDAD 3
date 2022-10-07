@@ -96,11 +96,7 @@ Enable-ADAccount -Identity "CN=David Segarra,OU=VENTAS,DC=Empresa,DC=Local"
 
 
 #Comando para leer un achivo csv:
-PS C:\Usuarios\Administrador\Escritorio> .\USUARIOS.ps1
-
-[parameter(Mandatory=$false)][string]$CsvFilePath = ".\SitesToCreate.csv" #Loading CSV file
-
-$csvItems = Import-Csv $CsvFilePath
+Import-CSV -Path C:\Usuarios\Administrador\Escritorio\USUARIOS.csv | ft 
 
 foreach($Item in $csvItems)
 {
