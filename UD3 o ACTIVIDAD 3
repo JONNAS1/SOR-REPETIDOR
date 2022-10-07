@@ -1,5 +1,3 @@
-###Hay que hacerlo igual a todo lo que hayamos hecho en la practica 3.
-
 #UO Unidad organizativa
 #Creación de la unidad organizativa nombrada departamento:
 New-ADOrganizationalUnit -Name "empresa" -Path "DC=JMG,DC=LOCAL" -Description "descripcion"
@@ -12,6 +10,7 @@ New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Des
 
 #Creación de una nueva unidad organizativa (CONTABILIDAD) dentro de la unidad organizativa llamada empresa:
 New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de contabilidad"
+
 
 #Usuarios del departamento Ventas.
 #Creación del usuario 1 David del departamento VENTAS:
@@ -74,7 +73,6 @@ New-ADUser -Name "Pepe" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
 -Enabled $true
 
 
-
 #Usuarios del departamento CONTABILIDAD.
 #Creación del usuario 1 Ramon del departamento CONTABILIDAD:
 New-ADUser -Name "Ramon" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
@@ -82,9 +80,6 @@ New-ADUser -Name "Ramon" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
 -AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
 -GivenName "Ramon" -Surname "Segarra" -ChangePasswordAtLogon $false
 -Enabled $true
-
-
-
 
 
 #Para deshabilitar cuentas de usuario:
@@ -95,3 +90,25 @@ Disable-ADAccount -Identity "David"
 
 #Para habilitar cuentas de usuario:
 Enable-ADAccount -Identity "CN=David Segarra,OU=VENTAS,DC=Empresa,DC=Local"
+
+
+
+
+
+#Comando para leer un achivo csv:
+PS C:\Usuarios\Administrador\Escritorio\P1> .\P2.ps1
+
+[parameter(Mandatory=$false)][string]$CsvFilePath = ".\SitesToCreate.csv" #Loading CSV file
+
+$csvItems = Import-Csv $CsvFilePath
+
+foreach($Item in $csvItems)
+{
+Write-Host "Site Name-" $Item.SiteName -ForegroundColor Green
+Write-Host "SiteURL-" $Item.SiteURL -ForegroundColor Green
+Write-Host "Site Template-" $Item.Template -ForegroundColor Green
+Write-Host "Site StorageQuota-" $Item.StorageQuota -ForegroundColor Green
+Write-Host "Site Owner-" $Item.Owner -ForegroundColor Green
+Write-Host "Site TimeZone-" $Item.TimeZone -ForegroundColor Green
+Write-Host "Site Location Id-" $Item.LocId -ForegroundColor Green
+}
