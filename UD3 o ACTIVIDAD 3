@@ -96,7 +96,7 @@ Enable-ADAccount -Identity "CN=David Segarra,OU=VENTAS,DC=Empresa,DC=Local"
 
 
 #Comando para leer un achivo csv:
-PS C:\Usuarios\Administrador\Escritorio\P1> .\P2.ps1
+PS C:\Usuarios\Administrador\Escritorio> .\USUARIOS.ps1
 
 [parameter(Mandatory=$false)][string]$CsvFilePath = ".\SitesToCreate.csv" #Loading CSV file
 
@@ -104,11 +104,7 @@ $csvItems = Import-Csv $CsvFilePath
 
 foreach($Item in $csvItems)
 {
-Write-Host "Site Name-" $Item.SiteName -ForegroundColor Green
-Write-Host "SiteURL-" $Item.SiteURL -ForegroundColor Green
-Write-Host "Site Template-" $Item.Template -ForegroundColor Green
-Write-Host "Site StorageQuota-" $Item.StorageQuota -ForegroundColor Green
-Write-Host "Site Owner-" $Item.Owner -ForegroundColor Green
-Write-Host "Site TimeZone-" $Item.TimeZone -ForegroundColor Green
-Write-Host "Site Location Id-" $Item.LocId -ForegroundColor Green
+
+Write-Host "DisplayName-" $Item.DisplayName -ForegroundColor Green
+
 }
