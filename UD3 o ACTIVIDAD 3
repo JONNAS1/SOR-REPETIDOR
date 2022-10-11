@@ -2,84 +2,27 @@
 #Creación de la unidad organizativa nombrada departamento:
 New-ADOrganizationalUnit -Name "empresa" -Path "DC=JMG,DC=LOCAL" -Description "descripcion"
 
-#Creación de una nueva unidad organizativa (VENTAS) dentro de la unidad organizativa llamada empresa:
+#Creación de nuevas unidades organizativas (VENTAS, COMPRAS y CONTABILIDAD) dentro de la unidad organizativa llamada empresa:
 New-ADOrganizationalUnit -Name "VENTAS" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de ventas"
-
-#Creación de una nueva unidad organizativa (COMPRAS) dentro de la unidad organizativa llamada empresa:
 New-ADOrganizationalUnit -Name "COMPRAS" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de compras"
-
-#Creación de una nueva unidad organizativa (CONTABILIDAD) dentro de la unidad organizativa llamada empresa:
 New-ADOrganizationalUnit -Name "CONTABILIDAD" -Path "OU=empresa,DC=JMG,DC=LOCAL" -Description "Departamento de contabilidad"
 
 
-#Usuarios del departamento Ventas.
-#Creación del usuario 1 David del departamento VENTAS:
-New-ADUser -Name "David" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "David" -UserPrincipalName "David@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
--GivenName "David" -Surname "Segarra" -ChangePasswordAtLogon $false
--Enabled $true
+#Usuarios del departamento VENTAS, COMPRAS y CONTABILIDAD.
+#Creación de todos los usuarios:
+New-ADUser -Name "David" -Path "OU=VENTAS,OU=EMPRESA,DC=JMG,DC=LOCAL"-SamAccountName "David" -UserPrincipalName "David@EMPRESA.LOCAL"-AccountPassword (ConvertTo-SecureString "DAV.VEN1." -AsPlainText -Force)-GivenName "David" -Surname "Segarra" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Marcos" -Path "OU=VENTAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Marcos" -UserPrincipalName "Marcos@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "MA.VEN2."-AsPlainText -Force) -GivenName "Marcos" -Surname "Gonzalez" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Adrian" -Path "OU=VENTAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Marcos" -UserPrincipalName "Adrian@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "AD.VEN3."-AsPlainText -Force) -GivenName "Adrian" -Surname "Serrano" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Jaume" -Path "OU=VENTAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Jaume" -UserPrincipalName "Jaume@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "JA.VEN4."-AsPlainText -Force) -GivenName "Jaume" -Surname "Perez" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Eduardo" -Path "OU=VENTAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Eduardo" -UserPrincipalName "Eduardo@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "ED.VEN5."-AsPlainText -Force) -GivenName "Eduardo" -Surname "Garcia" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Enrique" -Path "OU=COMPRAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Enrique" -UserPrincipalName "Enrique@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "EN.COMP1."-AsPlainText -Force) -GivenName "Enrique" -Surname "Ballester" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Maria" -Path "OU=COMPRAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Maria" -UserPrincipalName "Maria@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "MA.COMP2."-AsPlainText -Force) -GivenName "Maria" -Surname "Lopez" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Pepe" -Path "OU=COMPRAS,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Pepe" -UserPrincipalName "Pepe@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "PE.COMP3."-AsPlainText -Force) -GivenName "Pepe" -Surname "Llorca" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Ramon" -Path "OU=CONTABILIDAD,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Ramon" -UserPrincipalName "Ramon@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "RA.CON1."-AsPlainText -Force) -GivenName "Ramon" -Surname "Martinez" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Eva" -Path "OU=CONTABILIDAD,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "Eva" -UserPrincipalName "Eva@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "EV.CON2."-AsPlainText -Force) -GivenName "Eva" -Surname "Tarrega" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Raul" -Path "OU=CONTABILIDAD,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "David" -UserPrincipalName "Raul@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "RAU.CON3."-AsPlainText -Force) -GivenName "Raul" -Surname "Milan" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "Susana" -Path "OU=CONTABILIDAD,OU=EMPRESA,DC=JMG,DC=LOCAL" -SamAccountName "David" -UserPrincipalName "Susana@EMPRESA.LOCAL" -AccountPassword (ConvertTo-SecureString "SU.CON4."-AsPlainText -Force) -GivenName "Susana" -Surname "Sotorres" -ChangePasswordAtLogon $false -Enabled $true
 
-#Creación del usuario 2 Marcos del departamento VENTAS:
-New-ADUser -Name "Marcos" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Marcos" -UserPrincipalName "Marcos@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "MA.VEN2."-AsPlainText -Force)
--GivenName "Marcos" -Surname "Gonzalez" -ChangePasswordAtLogon $false
--Enabled $true
-
-#Creación del usuario 3 Adrian del departamento VENTAS:
-New-ADUser -Name "Adrian" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Marcos" -UserPrincipalName "Adrian@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "AD.VEN3."-AsPlainText -Force)
--GivenName "Adrian" -Surname "Serrano" -ChangePasswordAtLogon $false
--Enabled $true
-
-#Creación del usuario 4 Jaume del departamento VENTAS:
-New-ADUser -Name "Jaume" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Jaume" -UserPrincipalName "Jaume@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "JA.VEN4."-AsPlainText -Force)
--GivenName "Jaume" -Surname "Perez" -ChangePasswordAtLogon $false
--Enabled $true
-
-#Creación del usuario 5 Eduardo del departamento VENTAS:
-New-ADUser -Name "Eduardo" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Eduardo" -UserPrincipalName "Eduardo@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "ED.VEN5."-AsPlainText -Force)
--GivenName "Eduardo" -Surname "Garcia" -ChangePasswordAtLogon $false
--Enabled $true
-
-
-
-#Usuarios del departamento COMPRAS.
-#Creación del usuario 1 Enrique del departamento COMPRAS:
-New-ADUser -Name "Enrique" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Enrique" -UserPrincipalName "Enrique@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "EN.COMP1."-AsPlainText -Force)
--GivenName "Enrique" -Surname "Ballester" -ChangePasswordAtLogon $false
--Enabled $true
-
-#Creación del usuario 2 Maria del departamento COMPRAS:
-New-ADUser -Name "Maria" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Maria" -UserPrincipalName "Maria@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "MA.COMP2."-AsPlainText -Force)
--GivenName "Maria" -Surname "Lopez" -ChangePasswordAtLogon $false
--Enabled $true
-
-#Creación del usuario 3 Pepe del departamento COMPRAS:
-New-ADUser -Name "Pepe" -Path "OU=COMPRAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "Pepe" -UserPrincipalName "Pepe@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "PE.COMP3."-AsPlainText -Force)
--GivenName "Pepe" -Surname "Llorca" -ChangePasswordAtLogon $false
--Enabled $true
-
-
-#Usuarios del departamento CONTABILIDAD.
-#Creación del usuario 1 Ramon del departamento CONTABILIDAD:
-New-ADUser -Name "Ramon" -Path "OU=VENTAS,DC=EMPRESA,DC=LOCAL"
--SamAccountName "David" -UserPrincipalName "Ramon@EMPRESA.LOCAL"
--AccountPassword (ConvertTo-SecureString "DAV.VEN1."-AsPlainText -Force)
--GivenName "Ramon" -Surname "Segarra" -ChangePasswordAtLogon $false
--Enabled $true
 
 
 #Para deshabilitar cuentas de usuario:
@@ -96,7 +39,7 @@ Enable-ADAccount -Identity "CN=David Segarra,OU=VENTAS,DC=Empresa,DC=Local"
 
 
 #Comando para leer un achivo csv:
-Import-CSV -Path C:\Usuarios\Administrador\Escritorio\USUARIOS.csv | ft 
+Import-CSV -Path C:\Users\Administrador\Deskopt\USUARIOS.csv | ft 
 
 foreach($Item in $csvItems)
 {
