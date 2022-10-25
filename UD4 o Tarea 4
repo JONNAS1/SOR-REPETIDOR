@@ -1,1 +1,14 @@
-#Compartir la carpeta c:\Empresa para el grupo Administradores con control total y compartir a los Grupos Ventas, Compras y Contabilidad 
+#Establecer permisos en la carpeta c:\Empresa para el grupo Administradores con control total y compartir a los Grupos Ventas, Compras y Contabilidad con permisos de lectura:
+net share C:\Empresa /grant:Administradores,full /grant:Grupo_Ventas,read /grant:Grupo_Compras,read /grant:Grupo_Contabilidad
+
+#Para comprobar o mostrar informacion de todos los recursos compartidos:
+Get-SmbShare 
+
+#Para comprobar o mostrar informacion de un recurso específico:
+Get-SmbShare -Name (nombre del recurso)
+
+#Para comprobar o mostrar información de un recurso específica mas detallado:
+Get-SmbShare -Name (nombre del recurso)|fl
+
+#Mostrar los permisos de un recurso
+Get-SmbShareAccess -Name (nombre del recurso)
