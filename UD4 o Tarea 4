@@ -1,18 +1,56 @@
 #Página buena de vcomandos y información: https://petri.com/how-to-get-ntfs-file-permissions-using-powershell/
 
 
+#Creación de todos los recursos:
+mkdir C:\Empresa
+mkdir C:\Empresa_users
+mkdir C:\Empresa\VENTAS
+mkdir C:\Empresa\COMPRAS
+mkdir C:\Empresa\CONTABILIDAD
+mkdir C:\Empresa_users\Adrian.Serrano
+mkdir C:\Empresa_users\David.Segarra
+mkdir C:\Empresa_users\Eduardo.Garcia
+mkdir C:\Empresa_users\Enrique.Ballester
+mkdir C:\Empresa_users\Eva.Tarrega
+mkdir C:\Empresa_users\Jaume.Perez
+mkdir C:\Empresa_users\Marcos.Gonzalez
+mkdir C:\Empresa_users\Maria.Lopez
+mkdir C:\Empresa_users\Pepe.LLorca
+mkdir C:\Empresa_users\Ramon.Martinez
+mkdir C:\Empresa_users\Raul.Millan
+mkdir C:\Empresa_users\Susana.Sotorres
 
-#Establecer permisos en la carpeta c:\Empresa para el grupo Administradores con control total y compartir a los Grupos Ventas, Compras y Contabilidad con permisos de lectura:
-net share C:\Empresa /grant:Administradores,full /grant:Grupo_Ventas,read /grant:Grupo_Compras,read /grant:Grupo_Contabilidad
+#Quitar y agregar permisos a las carpetas Empresa y empresa users:
+icacls C:\Empresa /inheritance:r
+icacls C:\Empresa_users /inheritance:r
+icacls C:\Empresa /grant Administrador:F 
+icacls C:\Empresa /grant SYSTEM:F 
+icacls C:\Empresa /grant Grupo_Ventas:R 
+icacls C:\Empresa /grant Grupo_COMPRAS:R  
+icacls C:\Empresa /grant Grupo_Contabilidad:R
+icacls C:\Empresa_users /grant Administrador:F 
+icacls C:\Empresa_users /grant SYSTEM:F 
+icacls C:\Empresa_users /grant Grupo_Ventas:R 
+icacls C:\Empresa_users /grant Grupo_COMPRAS:R  
+icacls C:\Empresa_users /grant Grupo_Contabilidad:R
 
-#Para comprobar o mostrar informacion de todos los recursos compartidos:
-Get-SmbShare 
+#Quitar permisos heredados de los grupos ventas y compras de la carpeta CONTABILIDAD:
+Revoke-SmbShareAccess -Name CONTABILIDAD -GroupName Grupo_Ventas -Force
+Revoke-SmbShareAccess -Name CONTABILIDAD -GroupName Grupo_Compras -Force
 
-#Para comprobar o mostrar informacion de un recurso específico:
-Get-SmbShare -Name (nombre del recurso)
+#Quitar permisos heredados de los grupos contabilidad y compras de la carpeta VENTAS:
+Revoke-SmbShareAccess -Name VENTAS -GroupName Grupo_Contabilidad -Force
+Revoke-SmbShareAccess -Name VENTAS -GroupName Grupo_Compras -Force
 
-#Para comprobar o mostrar información de un recurso específica mas detallado:
-Get-SmbShare -Name (nombre del recurso)|fl
+#Quitar permisos heredados de los grupos ventas y compras de la carpeta COMPRAS:
+Revoke-SmbShareAccess -Name COMPRAS -GroupName Grupo_Ventas -Force
+Revoke-SmbShareAccess -Name COMPRAS -GroupName Grupo_Contabilidad -Force
 
-#Mostrar los permisos de un recurso
-Get-SmbShareAccess -Name (nombre del recurso)
+
+#Mostar permisos que hay en las carpetas Empresa, Empresa_users, COMPRAS, CONTABILIDAD y VENTAS:
+Get-Acl -Path C:\Empresa | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
+Get-Acl -Path C:\Empresa_Users | Format-Table -Wrap
+
