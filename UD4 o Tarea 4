@@ -1,6 +1,6 @@
 #Página buena de vcomandos y información: https://petri.com/how-to-get-ntfs-file-permissions-using-powershell/
 
-
+#Con el siguiente script me salen errores en el comando Revoke:
 #Creación de todos los recursos:
 mkdir C:\Empresa
 mkdir C:\Empresa_users
@@ -53,4 +53,56 @@ Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
 Get-Acl -Path C:\Empresa_Users | Format-Table -Wrap
+
+
+
+
+
+
+
+
+
+
+#Con este cript no me sale errores:
+#Creación de todos los recursos:
+mkdir C:\Empresa
+mkdir C:\Empresa_users
+mkdir C:\Empresa\VENTAS
+mkdir C:\Empresa\COMPRAS
+mkdir C:\Empresa\CONTABILIDAD
+mkdir C:\Empresa_users\Adrian.Serrano
+mkdir C:\Empresa_users\David.Segarra
+mkdir C:\Empresa_users\Eduardo.Garcia
+mkdir C:\Empresa_users\Enrique.Ballester
+mkdir C:\Empresa_users\Eva.Tarrega
+mkdir C:\Empresa_users\Jaume.Perez
+mkdir C:\Empresa_users\Marcos.Gonzalez
+mkdir C:\Empresa_users\Maria.Lopez
+mkdir C:\Empresa_users\Pepe.LLorca
+mkdir C:\Empresa_users\Ramon.Martinez
+mkdir C:\Empresa_users\Raul.Millan
+mkdir C:\Empresa_users\Susana.Sotorres
+
+#Quitar y agregar permisos a las carpetas Empresa y empresa users:
+icacls C:\Empresa /inheritance:r
+icacls C:\Empresa_users /inheritance:r
+icacls C:\Empresa /grant Administrador:F 
+icacls C:\Empresa /grant SYSTEM:F 
+icacls C:\Empresa /grant Grupo_Ventas:R 
+icacls C:\Empresa /grant Grupo_COMPRAS:R  
+icacls C:\Empresa /grant Grupo_Contabilidad:R
+icacls C:\Empresa_users /grant Administrador:F 
+icacls C:\Empresa_users /grant SYSTEM:F 
+icacls C:\Empresa_users /grant Grupo_Ventas:R 
+icacls C:\Empresa_users /grant Grupo_COMPRAS:R  
+icacls C:\Empresa_users /grant Grupo_Contabilidad:R
+
+#Mostar permisos que hay en las carpetas Empresa, Empresa_users, COMPRAS, CONTABILIDAD y VENTAS:
+Get-Acl -Path C:\Empresa | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
+Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
+Get-Acl -Path C:\Empresa_Users | Format-Table -Wrap
+
+
 
