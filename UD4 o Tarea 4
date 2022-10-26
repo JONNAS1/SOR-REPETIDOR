@@ -20,6 +20,13 @@ mkdir C:\Empresa_users\Ramon.Martinez
 mkdir C:\Empresa_users\Raul.Millan
 mkdir C:\Empresa_users\Susana.Sotorres
 
+#Crear los recursos compartidos:
+New-SmbShare -Path C:\Empresa\ -Name Empresa -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas -ReadAccess Grupo_Compras -ReadAccess Grupo_Contabilidad
+New-SmbShare -Path C:\Empresa_users\ -Name Empresa_users -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas -ReadAccess Grupo_Compras -ReadAccess Grupo_Contabilidad
+New-SmbShare -Path C:\Empresa\COMPRAS -Name COMPRAS -FullAccess Administrador -FullAccess SYSTEM  -ReadAccess Grupo_Compras 
+New-SmbShare -Path C:\Empresa\CONTABILIDAD -Name CONTABILIDAD -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Contabilidad
+New-SmbShare -Path C:\Empresa\VENTAS -Name VENTAS -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas
+
 #Quitar y agregar permisos a las carpetas Empresa y empresa users:
 icacls C:\Empresa /inheritance:r
 icacls C:\Empresa_users /inheritance:r
@@ -53,7 +60,6 @@ Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
 Get-Acl -Path C:\Empresa_Users | Format-Table -Wrap
-
 
 
 
