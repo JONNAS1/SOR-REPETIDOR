@@ -48,6 +48,9 @@ icacls C:\Empresa\CONTABILIDAD /grant Grupo_Contabilidad:M
 icacls C:\Empresa\COMPRAS /grant Administrador:F 
 icacls C:\Empresa\VENTAS /grant Administrador:F 
 icacls C:\Empresa\CONTABILIDAD /grant Administrador:F 
+icacls C:\Empresa\COMPRAS /grant SYSTEM:F 
+icacls C:\Empresa\VENTAS /grant SYSTEM:F 
+icacls C:\Empresa\CONTABILIDAD /grant SYSTEM:F 
 
 
 #Mostar los permisos que hay en las carpetas Empresa, Empresa_users, COMPRAS, CONTABILIDAD y VENTAS:
