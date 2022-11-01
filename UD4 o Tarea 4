@@ -21,10 +21,10 @@ mkdir C:\Empresa_users\Susana.Sotorres
 
 #Crear los recursos compartidos:
 New-SmbShare -Path C:\Empresa\ -Name Empresa -FullAccess SYSTEM 
-New-SmbShare -Path C:\Empresa_users\ -Name Empresa_users  -FullAccess SYSTEM 
+New-SmbShare -Path C:\Empresa_users -Name Empresa_users  -FullAccess SYSTEM 
 New-SmbShare -Path C:\Empresa\COMPRAS -Name COMPRAS -FullAccess SYSTEM  
 New-SmbShare -Path C:\Empresa\CONTABILIDAD -Name CONTABILIDAD -FullAccess SYSTEM 
-New-SmbShare -Path C:\Empresa\VENTAS  -FullAccess SYSTEM 
+New-SmbShare -Path C:\Empresa\VENTAS  -Name VENTAS -FullAccess SYSTEM 
 
 #Quitar, agregar permisos y quitar la herencia en las carpetas Empresa, empresa users y dentro de esas carpetas:
 icacls C:\Empresa /inheritance:r
@@ -59,12 +59,4 @@ Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
 Get-Acl -Path C:\Empresa_users | Format-Table -Wrap
-
-
-
-
-
-
-
-
 
