@@ -44,7 +44,7 @@ icacls C:\Empresa\VENTAS /inheritance:r
 icacls C:\Empresa\COMPRAS /inheritance:r
 icacls C:\Empresa\CONTABILIDAD /inheritance:r
 icacls C:\Empresa\VENTAS /grant Grupo_Ventas:C
-icacls C:\Empresa\COMPRAS /grant Grupo_COMPRAS:R
+icacls C:\Empresa\COMPRAS /grant Grupo_COMPRAS:C
 icacls C:\Empresa\CONTABILIDAD /grant Grupo_Contabilidad:C
 
 
