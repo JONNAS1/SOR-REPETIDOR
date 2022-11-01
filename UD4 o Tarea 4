@@ -1,5 +1,24 @@
 #Página buena de vcomandos y información: https://petri.com/how-to-get-ntfs-file-permissions-using-powershell/
 
+#Crear las carpetas:
+mkdir C:\Empresa
+mkdir C:\Empresa\COMPRAS
+mkdir C:\Empresa\CONTABILIDAD
+mkdir C:\Empresa\VENTAS
+mkdir C:\Empresa_users
+mkdir C:\Empresa_users\Adrian.Serrano
+mkdir C:\Empresa_users\David.Segarra
+mkdir C:\Empresa_users\Eduardo.Garcia
+mkdir C:\Empresa_users\Enrique.Ballester
+mkdir C:\Empresa_users\Eva.Tarrega
+mkdir C:\Empresa_users\Jaume.Perez
+mkdir C:\Empresa_users\Marcos.Gonzalez
+mkdir C:\Empresa_users\Maria.Lopez
+mkdir C:\Empresa_users\Pepe.Llorca
+mkdir C:\Empresa_users\Ramon.Martinez
+mkdir C:\Empresa_users\Raul.Millan
+mkdir C:\Empresa_users\Susana.Sotorres
+
 #Crear los recursos compartidos:
 New-SmbShare -Path C:\Empresa\ -Name Empresa -FullAccess SYSTEM 
 New-SmbShare -Path C:\Empresa_users\ -Name Empresa_users  -FullAccess SYSTEM 
@@ -36,7 +55,8 @@ Get-Acl -Path C:\Empresa | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\COMPRAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\VENTAS | Format-Table -Wrap
 Get-Acl -Path C:\Empresa\CONTABILIDAD | Format-Table -Wrap
-Get-Acl -Path C:\Empresa_Users | Format-Table -Wrap
+Get-Acl -Path C:\Empresa_users | Format-Table -Wrap
+
 
 
 
