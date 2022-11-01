@@ -1,31 +1,11 @@
 #Página buena de vcomandos y información: https://petri.com/how-to-get-ntfs-file-permissions-using-powershell/
 
-#Con el siguiente script me salen errores en el comando Revoke:
-#Creación de todos los recursos:
-mkdir C:\Empresa
-mkdir C:\Empresa_users
-mkdir C:\Empresa\VENTAS
-mkdir C:\Empresa\COMPRAS
-mkdir C:\Empresa\CONTABILIDAD
-mkdir C:\Empresa_users\Adrian.Serrano
-mkdir C:\Empresa_users\David.Segarra
-mkdir C:\Empresa_users\Eduardo.Garcia
-mkdir C:\Empresa_users\Enrique.Ballester
-mkdir C:\Empresa_users\Eva.Tarrega
-mkdir C:\Empresa_users\Jaume.Perez
-mkdir C:\Empresa_users\Marcos.Gonzalez
-mkdir C:\Empresa_users\Maria.Lopez
-mkdir C:\Empresa_users\Pepe.LLorca
-mkdir C:\Empresa_users\Ramon.Martinez
-mkdir C:\Empresa_users\Raul.Millan
-mkdir C:\Empresa_users\Susana.Sotorres
-
 #Crear los recursos compartidos:
-New-SmbShare -Path C:\Empresa\ -Name Empresa -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas -ReadAccess Grupo_Compras -ReadAccess Grupo_Contabilidad
-New-SmbShare -Path C:\Empresa_users\ -Name Empresa_users -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas -ReadAccess Grupo_Compras -ReadAccess Grupo_Contabilidad
-New-SmbShare -Path C:\Empresa\COMPRAS -Name COMPRAS -FullAccess Administrador -FullAccess SYSTEM  -ReadAccess Grupo_Compras 
-New-SmbShare -Path C:\Empresa\CONTABILIDAD -Name CONTABILIDAD -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Contabilidad
-New-SmbShare -Path C:\Empresa\VENTAS -Name VENTAS -FullAccess Administrador -FullAccess SYSTEM -ReadAccess Grupo_Ventas
+New-SmbShare -Path C:\Empresa\ -Name Empresa -FullAccess SYSTEM 
+New-SmbShare -Path C:\Empresa_users\ -Name Empresa_users  -FullAccess SYSTEM 
+New-SmbShare -Path C:\Empresa\COMPRAS -Name COMPRAS -FullAccess SYSTEM  
+New-SmbShare -Path C:\Empresa\CONTABILIDAD -Name CONTABILIDAD -FullAccess SYSTEM 
+New-SmbShare -Path C:\Empresa\VENTAS  -FullAccess SYSTEM 
 
 #Quitar, agregar permisos y quitar la herencia en las carpetas Empresa, empresa users y dentro de esas carpetas:
 icacls C:\Empresa /inheritance:r
@@ -43,11 +23,12 @@ icacls C:\Empresa_users /grant Grupo_Contabilidad:R
 icacls C:\Empresa\VENTAS /inheritance:r
 icacls C:\Empresa\COMPRAS /inheritance:r
 icacls C:\Empresa\CONTABILIDAD /inheritance:r
-icacls C:\Empresa\VENTAS /grant Grupo_Ventas:C
-icacls C:\Empresa\COMPRAS /grant Grupo_COMPRAS:C
-icacls C:\Empresa\CONTABILIDAD /grant Grupo_Contabilidad:C
-
-
+icacls C:\Empresa\VENTAS /grant Grupo_Ventas:M
+icacls C:\Empresa\COMPRAS /grant Grupo_COMPRAS:M
+icacls C:\Empresa\CONTABILIDAD /grant Grupo_Contabilidad:M
+icacls C:\Empresa\COMPRAS /grant Administrador:F 
+icacls C:\Empresa\VENTAS /grant Administrador:F 
+icacls C:\Empresa\CONTABILIDAD /grant Administrador:F 
 
 
 #Mostar los permisos que hay en las carpetas Empresa, Empresa_users, COMPRAS, CONTABILIDAD y VENTAS:
