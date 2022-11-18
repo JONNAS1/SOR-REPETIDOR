@@ -1,0 +1,36 @@
+#Crear las carpetas:
+mkdir C:\BANDA_USERS
+mkdir C:\BANDA_USERS\ZIDANE
+mkdir C:\BANDA_USERS\BUFFON
+mkdir C:\BANDA_USERS\EKKO
+mkdir C:\BANDA_USERS\AZIR
+
+#Dar permisos correspodientes en las carpetas BANDA_USERS y careptas de los usuarios:
+icacls C:\BANDA_USERS /inheritance:r
+icacls C:\BANDA_USERS /grant SYSTEM:F
+icacls C:\BANDA_USERS /grant Administrador:F  
+icacls C:\BANDA_USERS /grant GFIFA:R
+icacls C:\BANDA_USERS /grant GLOC:R  
+icacls C:\BANDA_USERS\ZIDANE /inheritance:r
+icacls C:\BANDA_USERS\BUFFON /inheritance:r
+icacls C:\BANDA_USERS\EKKO /inheritance:r
+icacls C:\BANDA_USERS\AZIR /inheritance:r
+icacls C:\BANDA_USERS\ZIDANE /grant SYSTEM:F
+icacls C:\BANDA_USERS\BUFFON /grant SYSTEM:F  
+icacls C:\BANDA_USERS\AZIR /grant SYSTEM:F  
+icacls C:\BANDA_USERS\EKKO /grant SYSTEM:F
+icacls C:\BANDA_USERS\ZIDANE /grant Administrador:F
+icacls C:\BANDA_USERS\BUFFON /grant Administrador:F  
+icacls C:\BANDA_USERS\AZIR /grant Administrador:F  
+icacls C:\BANDA_USERS\EKKO /grant Administrador:F     
+icacls C:\BANDA_USERS\AZIR /grant AZIR:M
+icacls C:\BANDA_USERS\EKKO /grant EKKO:M
+icacls C:\BANDA_USERS\BUFFON /grant BUFFON:M
+icacls C:\BANDA_USERS\ZIDANE /grant ZIDANE:M
+
+#Mostar los permisos que hay en las carpeta BANDA_USERS:
+Get-Acl -Path C:\BANDA_USERS | Format-Table -Wrap
+Get-Acl -Path C:\BANDA_USERS\ZIDANE | Format-Table -Wrap
+Get-Acl -Path C:\BANDA_USERS\BUFFON | Format-Table -Wrap
+Get-Acl -Path C:\BANDA_USERS\EKKO | Format-Table -Wrap
+Get-Acl -Path C:\BANDA_USERS\AZIR | Format-Table -Wrap
