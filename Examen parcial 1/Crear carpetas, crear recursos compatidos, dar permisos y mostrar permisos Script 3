@@ -1,0 +1,43 @@
+#Crear las carpetas:
+mkdir C:\FIFA
+mkdir C:\FIFA\ZIDANE
+mkdir C:\FIFA\BUFFON
+mkdir C:\LOC
+mkdir C:\LOC\MAGOS
+mkdir C:\LOC\LUCHADORES
+
+#Crear los recursos compartidos:
+New-SmbShare -Path C:\FIFA -Name FIFA -FullAccess SYSTEM 
+New-SmbShare -Path C:\LOC -Name LOC  -FullAccess SYSTEM 
+
+#Dar permisos correspodientes en las carpetas LOC y FIFA:
+icacls C:\FIFA /inheritance:r
+icacls C:\FIFA /grant GFIFA:F 
+icacls C:\FIFA /grant SYSTEM:F
+icacls C:\FIFA /grant Administrador:F 
+icacls C:\FIFA\ZIDANE /inheritance:r
+icacls C:\FIFA\BUFFON /inheritance:r
+icacls C:\FIFA\ZIDANE /grant ZIDANE:M 
+icacls C:\FIFA\BUFFON /grant BUFFON:M 
+icacls C:\FIFA\ZIDANE /grant SYSTEM:F
+icacls C:\FIFA\BUFFON /grant SYSTEM:F
+icacls C:\LOC /inheritance:r
+icacls C:\LOC /grant SYSTEM:F
+icacls C:\LOC /grant GLOC:F 
+icacls C:\LOC /grant Administrador:F 
+icacls C:\LOC\LUCHADORES /grant SYSTEM:F
+icacls C:\LOC\LUCHADORES /grant GLOC:F 
+icacls C:\LOC\LUCHADORES /grant Administrador:F
+icacls C:\LOC\MAGOS /grant SYSTEM:F
+icacls C:\LOC\MAGOS /grant GLOC:F 
+icacls C:\LOC\MAGOS /grant Administrador:F 
+
+
+
+#Mostar los permisos que hay en las carpetas FIFA y LOC:
+Get-Acl -Path C:\LOC | Format-Table -Wrap
+Get-Acl -Path C:\LOC\MAGOS | Format-Table -Wrap
+Get-Acl -Path C:\LOC\LUCHADORES | Format-Table -Wrap
+Get-Acl -Path C:\FIFA | Format-Table -Wrap
+Get-Acl -Path C:\FIFA\ZIDANE | Format-Table -Wrap
+Get-Acl -Path C:\FIFA\BUFFON | Format-Table -Wrap
