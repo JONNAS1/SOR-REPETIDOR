@@ -1,0 +1,13 @@
+#Comandos para crear dos grupo de seguridad (GFIFA y GLOC) dentro de las unidades prganizativas FIFA y LOC:
+New-ADGroup -Name "GFIFA"-GroupCategory Security -GroupScope Global -Path "OU=FIFA,DC=BANDA,DC=GAME"
+New-ADGroup -Name "GLOC"-GroupCategory Security -GroupScope Global -Path "OU=LOC,DC=BANDA,DC=GAME"
+
+#Creación de todos los usuarios:
+New-ADUser -Name "ZIDANE" -Path "OU=FIFA,DC=BANDA,DC=GAME"-SamAccountName "ZIDANE" -UserPrincipalName "ZIDANE@BANDA.GAME"-AccountPassword (ConvertTo-SecureString "Zigfifa1" -AsPlainText -Force)-GivenName "ZIDANE" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "BUFFON" -Path "OU=FIFA,DC=BANDA,DC=GAME"-SamAccountName "BUFFON" -UserPrincipalName "BUFFON@BANDA.GAME"-AccountPassword (ConvertTo-SecureString "Bugfifa2" -AsPlainText -Force)-GivenName "BUFFON" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "EKKO" -Path "OU=LOC,DC=BANDA,DC=GAME"-SamAccountName "EKKO" -UserPrincipalName "EKKON@BANDA.GAME"-AccountPassword (ConvertTo-SecureString "Ekgloc1" -AsPlainText -Force)-GivenName "EKKO" -ChangePasswordAtLogon $false -Enabled $true
+New-ADUser -Name "AZIR" -Path "OU=LOC,DC=BANDA,DC=GAME"-SamAccountName "AZIR" -UserPrincipalName "AZIR@BANDA.GAME"-AccountPassword (ConvertTo-SecureString "Azgloc2" -AsPlainText -Force)-GivenName "AZIR" -ChangePasswordAtLogon $false -Enabled $true
+
+#Comando para añadir varios usuarios al grupo GIFA: 
+Add-ADGroupMember -Identity "GFIFA" -Members ZIDANE,BUFFON
+Add-ADGroupMember -Identity "GLOC" -Members EKKO,AZIR
