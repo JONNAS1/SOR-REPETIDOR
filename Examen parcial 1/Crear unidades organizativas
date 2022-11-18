@@ -1,0 +1,11 @@
+#Creación de las unidades organizativas LOC y FIFA:
+New-ADOrganizationalUnit -Name "LOC" -Path "DC=BANDA,DC=GAME" -Description "descripcion"
+New-ADOrganizationalUnit -Name "FIFA" -Path "DC=BANDA,DC=GAME" -Description "descripcion"
+
+#Creación de nuevas unidades organizativas (MAGOS y LUCHADORES) dentro de la unidad organizativa llamada LOC:
+New-ADOrganizationalUnit -Name "MAGOS" -Path "OU=LOC,DC=BANDA,DC=GAME" -Description "MAGOS"
+New-ADOrganizationalUnit -Name "LUCHADORES" -Path "OU=LOC,DC=BANDA,DC=GAME" -Description "LUCHADORES"
+
+#Creación de nuevas unidades organizativas (IT Y FR) dentro de la unidad organizativa llamada FIFA:
+New-ADOrganizationalUnit -Name "IT" -Path "OU=FIFA,DC=BANDA,DC=GAME" -Description "IT"
+New-ADOrganizationalUnit -Name "FR" -Path "OU=FIFA,DC=BANDA,DC=GAME" -Description "FR"
